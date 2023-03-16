@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        https://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults autowire="true" autoconfigure="true" public="true"/>
+
+        <prototype namespace="App\" resource="../src/*">
+            <exclude>../src/{Entity}</exclude>
+            <exclude>../src/*/{Exception,Entity}</exclude>
+        </prototype>
+
+        <service id="Symfony\Contracts\HttpClient\HttpClientInterface" class="Symfony\Component\HttpClient\NativeHttpClient"/>
+
+        <service id="App\Rate\Http\ClientConfiguration" class="App\Rate\Http\ClientConfiguration">
+            <argument type="string">57f3b2e86152062f627f5293b09792f4</argument>
+        </service>
+    </services>
+</container>
